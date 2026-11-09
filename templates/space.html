@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ username }} 的個人空間</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<div class="personal-space">
+
+    <header class="space-header">
+        <h1>{{ username }} 的日誌空間</h1>
+        <p>Welcome to my world</p>
+    </header>
+
+    <div class="space-layout">
+
+        <aside class="sidebar">
+
+            <div class="profile-card">
+                <div class="avatar">👤</div>
+                <h2>{{ username }}</h2>
+                <p>這是我的個人空間。</p>
+            </div>
+
+            <div class="widget">
+                <h3>關於我</h3>
+                <p>歡迎來到我的日誌世界。</p>
+            </div>
+
+            <div class="widget">
+                <h3>空間選單</h3>
+                <a href="#diary">我的日誌</a>
+                <a href="#about">個人介紹</a>
+            </div>
+
+        </aside>
+
+        <main class="diary-main" id="diary">
+
+            <h2>我的日誌</h2>
+
+            {% for post in posts %}
+            <article class="diary-post">
+
+                <h3>{{ post.title }}</h3>
+
+                <div class="post-date">
+                    {{ post.date }}
+                </div>
+
+                <p>{{ post.content }}</p>
+
+            </article>
+            {% endfor %}
+
+        </main>
+
+    </div>
+
+    <footer class="space-footer">
+        This is my personal diary.
+    </footer>
+
+</div>
+
+</body>
+</html>

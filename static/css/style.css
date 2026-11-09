@@ -1,0 +1,143 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, "Noto Sans TC", sans-serif;
+    background: #f1f1f1;
+    color: #333;
+}
+
+.main-header {
+    background: #252525;
+    color: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.home-container {
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.welcome h1 {
+    font-size: 36px;
+}
+
+.primary-button {
+    display: inline-block;
+    background: #444;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+}
+
+.personal-space {
+    max-width: 1200px;
+    margin: 30px auto;
+    background: white;
+    min-height: 800px;
+    padding: 25px;
+}
+
+.space-header {
+    text-align: center;
+    background: #e9e4dc;
+    padding: 55px 20px;
+    margin-bottom: 25px;
+}
+
+.space-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 25px;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-card,
+.widget,
+.diary-post {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    background: #ddd;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 35px;
+}
+
+.widget a {
+    display: block;
+    margin: 10px 0;
+}
+
+.diary-main h2 {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 12px;
+}
+
+.diary-post {
+    margin-bottom: 20px;
+}
+
+.post-date {
+    color: #888;
+    font-size: 13px;
+    margin: 10px 0;
+}
+
+.space-footer {
+    margin-top: 40px;
+}
+
+@media (max-width: 700px) {
+    .space-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .personal-space {
+        margin: 10px;
+        padding: 15px;
+    }
+}
