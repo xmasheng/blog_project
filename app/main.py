@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 
 app = FastAPI(
     title="My Diary",
-    description="個人日誌空間網站",
+    description="個人網站",
     version="1.0.0"
 )
 
@@ -38,7 +38,7 @@ async def personal_space(request: Request, username: str):
         {
             "title": "我的第一篇日誌",
             "date": "2026-11-05",
-            "content": "這是我的第一篇個人日誌，歡迎來到我的空間。"
+            "content": "這是我的第一篇個人日誌。"
         },
         {
             "title": "今天的生活",
