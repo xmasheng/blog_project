@@ -23,7 +23,7 @@ class Space(Base):
     title: Mapped[str] = mapped_column(
         String(100),
         nullable=False,
-        default="我的個人空間"
+        default="個人空間"
     )
 
     theme: Mapped[str] = mapped_column(

@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>發表新日誌</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<div class="personal-space">
+
+    <header class="space-header">
+        <h1>發表新日誌</h1>
+        <p>記錄</p>
+    </header>
+
+    <main class="diary-main">
+
+        <form action="/u/{{ username }}/posts/new" method="post">
+
+            <div>
+                <label for="title">文章標題</label>
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    maxlength="100"
+                    required
+                >
+            </div>
+
+            <div>
+                <label for="content">文章內容</label>
+                <textarea
+                    id="content"
+                    name="content"
+                    rows="12"
+                    required
+                ></textarea>
+            </div>
+
+            <button type="submit">發表日誌</button>
+
+        </form>
+
+    </main>
+
+</div>
+
+</body>
+</html>

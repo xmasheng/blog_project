@@ -4,6 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from app.routers import spaces
+from app.routers import posts
 
 app = FastAPI(
     title="Blog Project",
@@ -33,7 +34,7 @@ def home(request: Request):
 
 # 註冊個人空間 Router
 app.include_router(spaces.router)
-
+app.include_router(posts.router)
 
 @app.get("/health")
 def health():

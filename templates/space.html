@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{{ username }} 的個人空間</title>
+    <title>{{ space.title }}</title>
 
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
@@ -15,7 +14,7 @@
 <div class="personal-space">
 
     <header class="space-header">
-        <h1>{{ username }} 的日誌空間</h1>
+        <h1>{{ space.title }}</h1>
         <p>Welcome to my world</p>
     </header>
 
@@ -26,12 +25,12 @@
             <div class="profile-card">
                 <div class="avatar">👤</div>
                 <h2>{{ username }}</h2>
-                <p>這是我的個人空間。</p>
+                <p>My space。</p>
             </div>
 
-            <div class="widget">
+            <div class="widget" id="about">
                 <h3>關於我</h3>
-                <p>歡迎來到我的日誌世界。</p>
+                <p>歡迎來到我的有名大站。</p>
             </div>
 
             <div class="widget">
@@ -46,29 +45,42 @@
 
             <h2>我的日誌</h2>
 
-            {% for post in posts %}
-            <article class="diary-post">
+            {% if posts %}
 
-                <h3>{{ post.title }}</h3>
+                {% for post in posts %}
 
-                <div class="post-date">
-                    {{ post.date }}
+                <article class="diary-post">
+
+                    <h3>{{ post.title }}</h3>
+
+                    <div class="post-date">
+                        {{ post.date }}
+                    </div>
+
+                    <p>{{ post.content }}</p>
+
+                </article>
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="empty-posts">
+                    <p>目前還沒有發表任何日誌。</p>
                 </div>
 
-                <p>{{ post.content }}</p>
-
-            </article>
-            {% endfor %}
+            {% endif %}
 
         </main>
 
     </div>
 
     <footer class="space-footer">
-        This is my personal diary.
+        This is my personal space.
     </footer>
 
 </div>
 
 </body>
 </html>
+
