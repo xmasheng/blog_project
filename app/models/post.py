@@ -14,8 +14,8 @@ class Post(Base):
         index=True
     )
 
-    user_id: Mapped[int] = mapped_column(
-        ForeignKey("users.id"),
+    space_id: Mapped[int] = mapped_column(
+        ForeignKey("spaces.id"),
         nullable=False,
         index=True
     )
@@ -35,7 +35,8 @@ class Post(Base):
         server_default=func.now()
     )
 
-    user: Mapped["User"] = relationship(
-        "User",
+    space: Mapped["Space"] = relationship(
+        "Space",
         back_populates="posts"
     )
+

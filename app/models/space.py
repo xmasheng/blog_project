@@ -1,3 +1,4 @@
+
 from sqlalchemy import Integer, String, DateTime, ForeignKey, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -41,3 +42,8 @@ class Space(Base):
         back_populates="space"
     )
 
+    posts: Mapped[list["Post"]] = relationship(
+        "Post",
+        back_populates="space",
+        cascade="all, delete-orphan"
+    )
