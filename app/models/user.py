@@ -44,8 +44,4 @@ class User(Base):
         cascade="all, delete-orphan"
     )
 
-    posts = relationship(
-        "Post",
-        back_populates="user",
-        cascade="all, delete-orphan"
-    )
+    
