@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>編輯日誌</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<div class="personal-space">
+
+    <header class="space-header">
+        <h1>編輯日誌</h1>
+        <p>修改你的紀錄</p>
+    </header>
+
+    <main class="diary-main">
+
+        <form action="/u/{{ username }}/posts/{{ post.id }}/edit" method="post">
+
+            <div>
+                <label for="title">文章標題</label>
+
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    maxlength="200"
+                    value="{{ post.title }}"
+                    required
+                >
+            </div>
+
+            <div>
+                <label for="content">文章內容</label>
+
+                <textarea
+                    id="content"
+                    name="content"
+                    rows="12"
+                    required
+                >{{ post.content }}</textarea>
+            </div>
+
+            <button type="submit">儲存修改</button>
+
+            <a href="/u/{{ username }}">取消</a>
+
+        </form>
+
+    </main>
+
+</div>
+
+</body>
+</html>

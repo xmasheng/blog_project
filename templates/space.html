@@ -52,7 +52,16 @@
                 <article class="diary-post">
 
                     <h3>{{ post.title }}</h3>
-
+                    <a href="/u/{{ username }}/posts/{{ post.id }}/edit">
+                        編輯日誌
+                    </a>
+                    <form
+                         action="/u/{{ username }}/posts/{{ post.id }}/delete"
+                         method="post"
+                         onsubmit="return confirm('確定要刪除這篇日誌嗎？');"
+                    >
+                         <button type="submit">刪除日誌</button>
+                    </form>
                     <div class="post-date">
                         {{ post.date }}
                     </div>

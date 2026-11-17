@@ -85,3 +85,137 @@ def create_post(
         url=f"/u/{username}",
         status_code=303
     )
+
+
+# 顯示編輯日誌頁面
+@router.get("/u/{username}/posts/{post_id}/edit")
+def edit_post_page(
+    request: Request,
+    username: str,
+    post_id: int,
+    db: Session = Depends(get_db)
+):
+    user = (
+        db.query(User)
+        .filter(User.username == username)
+        .first()
+    )
+
+    if not user:
+        raise HTTPException(
+            status_code=404,
+            detail="找不到這個會員"
+        )
+
+    post = (
+        db.query(Post)
+        .filter(
+            Post.id == post_id,
+            Post.space_id == user.space.id
+        )
+        .first()
+    )
+
+    if not post:
+        raise HTTPException(
+            status_code=404,
+            detail="找不到這篇日誌"
+        )
+
+    return templates.TemplateResponse(
+        request=request,
+        name="post_edit.html",
+        context={
+            "username": username,
+            "post": post
+        }
+    )
+
+
+# 接收修改資料並更新日誌
+@router.post("/u/{username}/posts/{post_id}/edit")
+def update_post(
+    username: str,
+    post_id: int,
+    title: str = Form(..., max_length=200),
+    content: str = Form(...),
+    db: Session = Depends(get_db)
+):
+    user = (
+        db.query(User)
+        .filter(User.username == username)
+        .first()
+    )
+
+    if not user:
+        raise HTTPException(
+            status_code=404,
+            detail="找不到這個會員"
+        )
+
+    post = (
+        db.query(Post)
+        .filter(
+            Post.id == post_id,
+            Post.space_id == user.space.id
+        )
+        .first()
+    )
+
+    if not post:
+        raise HTTPException(
+            status_code=404,
+            detail="找不到這篇日誌"
+        )
+
+    post.title = title
+    post.content = content
+
+    db.commit()
+
+    return RedirectResponse(
+        url=f"/u/{username}",
+        status_code=303
+    )
+
+# 刪除日誌
+@router.post("/u/{username}/posts/{post_id}/delete")
+def delete_post(
+    username: str,
+    post_id: int,
+    db: Session = Depends(get_db)
+):
+    user = (
+        db.query(User)
+        .filter(User.username == username)
+        .first()
+    )
+
+    if not user:
+        raise HTTPException(
+            status_code=404,
+            detail="找不到這個會員"
+        )
+
+    post = (
+        db.query(Post)
+        .filter(
+            Post.id == post_id,
+            Post.space_id == user.space.id
+        )
+        .first()
+    )
+
+    if not post:
+        raise HTTPException(
+            status_code=404,
+            detail="找不到這篇日誌"
+        )
+
+    db.delete(post)
+    db.commit()
+
+    return RedirectResponse(
+        url=f"/u/{username}",
+        status_code=303
+    )
